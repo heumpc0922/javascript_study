@@ -77,6 +77,7 @@
           <label class="form-label small text-muted">도시 선택</label>
           <select id="citySelect" class="form-select">
             <option value="seoul">서울 (Seoul)</option>
+            <option value="Busan">부산 (Busan)</option>
             <option value="tokyo">도쿄 (Tokyo)</option>
             <option value="newyork">뉴욕 (New York)</option>
             <option value="london">런던 (London)</option>
@@ -88,7 +89,7 @@
             단일 조회 (async/await)
           </button>
           <button id="btnFetchAll" class="btn btn-success flex-fill py-2 fw-semibold">
-            전체 5개 도시 동시 조회 (Promise.all)
+            전체 6개 도시 동시 조회 (Promise.all)
           </button>
         </div>
       </div>
@@ -194,7 +195,7 @@
       weatherResult.classList.add('d-none');
       resultGrid.innerHTML = '';
 
-      setBuzzerState('pending', '⏳ 진동벨 5개 발급: Pending (동시 병렬 대기)', '5개 도시(서울, 도쿄, 뉴욕, 런던, 파리)를 한 번에 조회합니다.', 'bg-warning text-dark');
+      setBuzzerState('pending', '⏳ 진동벨 6개 발급: Pending (동시 병렬 대기)', '6개 도시(서울, 부산, 도쿄, 뉴욕, 런던, 파리)를 한 번에 조회합니다.', 'bg-warning text-dark');
       log(`[동시 주문] fetch('/api/weather/compare') 병렬 API 호출 (Promise.all)`);
 
       try {
@@ -203,8 +204,8 @@
 
         if (!result.success) throw new Error(result.error);
 
-        setBuzzerState('fulfilled', '✅ 5개 도시 동시 수령 성공! (Fulfilled)', `총 소요 시간: 단 ${result.durationMs}ms (직렬 실행 대비 압도적 단축)`, 'bg-success');
-        log(`[전체 완료] 5개 도시 날씨를 병렬로 ${result.durationMs}ms 만에 일괄 수령했습니다.`);
+        setBuzzerState('fulfilled', '✅ 6개 도시 동시 수령 성공! (Fulfilled)', `총 소요 시간: 단 ${result.durationMs}ms (직렬 실행 대비 압도적 단축)`, 'bg-success');
+        log(`[전체 완료] 6개 도시 날씨를 병렬로 ${result.durationMs}ms 만에 일괄 수령했습니다.`);
 
         resultGrid.innerHTML = result.data.map(item => `
           <div class="col">

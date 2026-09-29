@@ -17,6 +17,7 @@ app.use(express.json());
 // 도시별 위도/경도 데이터 (Open-Meteo용)
 const CITY_COORDINATES = {
   seoul: { name: '서울 (Seoul)', lat: 37.5665, lon: 126.9780 },
+  busan: { name: '부산 (Busan)', lat: 35.1796, lon: 129.0756 },
   tokyo: { name: '도쿄 (Tokyo)', lat: 35.6895, lon: 139.6917 },
   newyork: { name: '뉴욕 (New York)', lat: 40.7128, lon: -74.0060 },
   london: { name: '런던 (London)', lat: 51.5074, lon: -0.1278 },
@@ -107,8 +108,8 @@ app.get('/api/weather', async (req, res) => {
 // [API 라우트 2] 다중 도시 동시 병렬 조회 (Promise.all 실습)
 // -------------------------------------------------------------
 app.get('/api/weather/compare', async (req, res) => {
-  const targetCities = ['seoul', 'tokyo', 'newyork', 'london', 'paris'];
-  console.log(`[병렬 요청 - Promise.all] 5개 도시 동시 조회 시작`);
+  const targetCities = ['seoul', 'busan', 'tokyo', 'newyork', 'london', 'paris'];
+  console.log(`[병렬 요청 - Promise.all] 6개 도시 동시 조회 시작`);
 
   const startTime = Date.now();
 
