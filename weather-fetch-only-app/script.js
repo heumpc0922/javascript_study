@@ -1,5 +1,5 @@
 // 1. OpenWeather API 키 설정
-const API_KEY = '59d5cfcb29c170d20395640c707f08a2';
+const API_KEY = 'your_key_here';
 
 // 2. 5대 도시 영문 검색 이름 설정
 const CITIES = {
